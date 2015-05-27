@@ -23,7 +23,7 @@ describe 'Square' do
     expect(square).to eq(nil)
   end
 
-  it 'should declare a square with a point the side' do
+  it 'should declare a square with a point and side' do
     point = Point.new(2,3)
     side = 5
     square = Square.new_with_sides(point, side)
@@ -31,6 +31,19 @@ describe 'Square' do
     expect(Point.equal? square.point2, Point.new(point.x + side, point.y)).to eq(true)
     expect(Point.equal? square.point3, Point.new(point.x, point.y + side)).to eq(true)
     expect(Point.equal? square.point4, Point.new(point.x + side, point.y + side)).to eq(true)
+  end
+
+  it 'should declare a square with just a side length and dimension' do
+    side1 = "4m"
+    side2 = "4 cm"
+    square1 = Square.new_with_only_side(side1)
+    square2 = Square.new_with_only_side(side2)
+    expect(Point.equal? square1.point2, Point.new(4000, 0)).to eq(true)
+    expect(Point.equal? square1.point3, Point.new(0, 4000)).to eq(true)
+    expect(Point.equal? square1.point4, Point.new(4000, 4000)).to eq(true)
+    expect(Point.equal? square2.point2, Point.new(40, 0)).to eq(true)
+    expect(Point.equal? square2.point3, Point.new(0, 40)).to eq(true)
+    expect(Point.equal? square2.point4, Point.new(40, 40)).to eq(true)
   end
 
   describe 'area' do

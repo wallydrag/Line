@@ -8,6 +8,11 @@ class Square < Rectangle
     Square.new point1, point2, point3, point4
   end
 
+  def self.new_with_only_side side
+    side_converted = General.unit_converter(side)
+    Square.new_with_sides Point.new(0, 0), side_converted
+  end
+
   def self.valid? point1, point2, point3, point4
     line1_tmp = Line.new point1, point2
     line2_tmp = Line.new point2, point3
@@ -27,7 +32,6 @@ class Square < Rectangle
       Line.orthogonal?(diagonal1, diagonal2) and line1.length == line2.length and
       line2.length == line3.length and line3.length == line4.length
     )
-
   end
 
 end

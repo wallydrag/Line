@@ -35,10 +35,22 @@ describe 'Rectangle' do
     end
   end
 
+  describe 'Rectangle with units' do
+    it 'should declare a rectangle at origin with length and breadth' do
+      side1 = "4m"
+      side2 = "12 cm"
+      rectangle = Rectangle.new_with_only_side side1, side2
+      expect(Point.equal? rectangle.point1, Point.new(0, 0)).to eq(true)
+      expect(Point.equal? rectangle.point2, Point.new(4000,0)).to eq(true)
+      expect(Point.equal? rectangle.point3, Point.new(0, 120)).to eq(true)
+      expect(Point.equal? rectangle.point4, Point.new(4000, 120)).to eq(true)
+    end
+  end
+
   describe 'is valid' do
-      point1 = Point.new 3, 0
-      point2 = Point.new 0, 0
-      point3 = Point.new 0, 4
+    point1 = Point.new 3, 0
+    point2 = Point.new 0, 0
+    point3 = Point.new 0, 4
 
     it 'should return true for valid rectangle points' do
       point4 = Point.new 3, 4
@@ -50,12 +62,11 @@ describe 'Rectangle' do
       expect(Rectangle.valid? point1, point2, point3, point4).to eq(false)
     end
 
-    it 'should be valid' do
+    it 'should be valid for square points too' do
       point1 = Point.new 0,0
       point2 = Point.new 3,0
-      point3 = Point.new 0,4
-      point4 = Point.new 3,4
-      puts Rectangle.valid? point1, point2, point3, point4
+      point3 = Point.new 0,3
+      point4 = Point.new 3,3
       expect(Rectangle.valid? point1, point2, point3, point4).to eq(true)
     end
   end

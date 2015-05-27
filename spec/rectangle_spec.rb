@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'Rectangle' do
   it 'should declare a rectangle with variable and valid inputs' do
     point1 = Point.new 0, 0
-    point2 = Point.new 2, 0
-    point3 = Point.new 2, 4
+    point2 = Point.new 2, 4
+    point3 = Point.new 2, 0
     point4 = Point.new 0, 4
     rectangle= Rectangle.new point1, point2, point3, point4
     expect(Point.equal? rectangle.point1, point1).to eq(true)

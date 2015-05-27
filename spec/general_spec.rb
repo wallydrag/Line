@@ -1,5 +1,6 @@
 require 'spec_helper'
 include General
+
 describe 'unit_converter' do
   it 'should correctly convert units' do
     length1 = "12cm"
